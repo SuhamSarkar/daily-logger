@@ -351,8 +351,9 @@ body {
 
 .log-table th:nth-child(3),
 .log-table td:nth-child(3) {
-    width: 400px;        /* Constant width */
-    word-wrap: break-word;
+    width: 600px;          /* Wider constant width */
+    max-width: 600px;
+    word-break: break-word;
 }
 
 .log-table th,
@@ -546,10 +547,7 @@ html {
     padding: 22px 26px;
 }
 
-/* Table scaling */
-.log-table {
-    font-size: 0.95rem;
-}
+
 
 /* Ultra-wide monitor support */
 @media (min-width:1600px){
