@@ -343,7 +343,16 @@ body {
 .log-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 14px;
+    font-size: 22px; /* Match name size */
+}
+.log-table {
+    table-layout: fixed;
+}
+
+.log-table th:nth-child(3),
+.log-table td:nth-child(3) {
+    width: 400px;        /* Constant width */
+    word-wrap: break-word;
 }
 
 .log-table th,
