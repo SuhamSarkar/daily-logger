@@ -462,3 +462,98 @@ body {
 html, body {
     height: 100%;
 }
+
+
+
+/* =========================================================
+   ADVANCED DESKTOP RESPONSIVE SYSTEM
+   Fluid typography + large-screen scaling
+   ========================================================= */
+
+/* Fluid root font scaling */
+html {
+    font-size: clamp(16px, 1vw + 12px, 22px);
+}
+
+/* Large container scaling */
+.main-content {
+    max-width: 1400px;
+}
+
+/* Header scaling for big screens */
+.brand-title {
+    font-size: clamp(2.8rem, 4vw, 4.5rem);
+}
+
+.brand-subtitle {
+    font-size: clamp(1rem, 1.2vw, 1.3rem);
+}
+
+/* Modal scaling */
+.name-modal-content {
+    max-width: 480px;
+    padding: 35px;
+}
+
+.name-modal-content h2 {
+    font-size: clamp(1.4rem, 1.5vw, 1.8rem);
+}
+
+/* Input scaling */
+.name-modal-content input {
+    font-size: 1rem;
+    padding: 12px;
+}
+
+/* Button scaling */
+.name-modal-actions button {
+    font-size: 1rem;
+    padding: 12px;
+}
+
+/* Floating button scaling */
+.fab-main {
+    width: 70px;
+    height: 70px;
+    font-size: 34px;
+}
+
+/* Card scaling */
+.log-card {
+    padding: 22px 26px;
+}
+
+/* Table scaling */
+.log-table {
+    font-size: 0.95rem;
+}
+
+/* Ultra-wide monitor support */
+@media (min-width: 1600px) {
+
+    .main-content {
+        max-width: 1600px;
+    }
+
+    .brand-title {
+        font-size: 4.8rem;
+    }
+
+    .brand-subtitle {
+        font-size: 1.4rem;
+    }
+
+}
+
+/* 4K display optimization */
+@media (min-width: 2200px) {
+
+    html {
+        font-size: 24px;
+    }
+
+    .brand-title {
+        font-size: 5.5rem;
+    }
+
+}
