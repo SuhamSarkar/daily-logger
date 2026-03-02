@@ -386,7 +386,8 @@ body {
 
 /* Checkbox styling */
 .delete-checkbox {
-    transform: scale(1.2);
+    width: 20px;
+    height: 20px;
     cursor: pointer;
 }
 
@@ -397,11 +398,12 @@ body {
 
 /* Delete Selected Button */
 #confirmDeleteBtn {
-    padding: 10px 20px;
-    border-radius: 8px;
+    padding: 14px 32px;      /* Bigger body */
+    font-size: 18px;         /* Match table text hierarchy */
+    border-radius: 10px;
     border: none;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 700;
     background: linear-gradient(135deg, #ef4444, #dc2626);
     color: white;
     transition: transform 0.2s ease, opacity 0.2s ease;
