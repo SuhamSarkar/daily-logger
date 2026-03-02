@@ -438,7 +438,7 @@ body {
 }
 .input-group input {
     padding: 10px 12px;
-    width: 100%;
+    width: 85%;
     max-width: 100%; /* Prevent overflow */
     font-size: 17px;
     min-height: 40px;
