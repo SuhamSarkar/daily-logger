@@ -9,7 +9,7 @@ const SUPABASE_ANON_KEY = "sb_publishable_lIlQdoFNzpKQV0NxpNbq6g_KdXX1SaO";
 
 /* Create Supabase client */
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
+alert("Supabase initialized");
 
 
 
