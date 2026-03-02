@@ -449,7 +449,8 @@ body {
     color: white;
 }
 .input-group button {
-    min-width: 100px;
+    width: 100%;          /* Same width as input */
+    max-width: 100%;
 }
 .save-time-btn,
 .save-task-btn,
