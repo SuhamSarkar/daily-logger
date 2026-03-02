@@ -3,6 +3,7 @@
    =================================== */
 
 /* Your Supabase credentials */
+alert("Script loaded");
 const SUPABASE_URL = "https://ftujdjdibmofbullnlhh.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_lIlQdoFNzpKQV0NxpNbq6g_KdXX1SaO";
 
