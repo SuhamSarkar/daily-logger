@@ -65,7 +65,7 @@ body {
 
 /* Brand title */
 .brand-title {
-    font-size: 3rem;
+    font-size: clamp(2.2rem, 2.8vw, 3rem);
     font-weight: 700;
     letter-spacing: 2px;
     background: linear-gradient(90deg, #3b82f6, #06b6d4);
@@ -147,11 +147,11 @@ body {
 /* Drop-up Menu */
 .fab-menu {
     position: absolute;
-    bottom: 80px;
+    bottom: 90px;
     right: 0;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 18px;
     opacity: 0;
     transform: translateY(20px);
     pointer-events: none;
@@ -166,19 +166,20 @@ body {
 }
 
 /* Option Button */
-.fab-option {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 18px;
-    border-radius: 12px;
-    border: none;
-    cursor: pointer;
-    background: #1e293b;
-    color: white;
-    font-size: 14px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
-    transition: all 0.3s ease;
+.fab-option{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px 22px;
+    border-radius:12px;
+    border:none;
+    cursor:pointer;
+    background:#1e293b;
+    color:white;
+    font-size:16px;
+    min-width:150px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.35);
+    transition:all .25s ease;
 }
 
 /* Option Hover */
@@ -472,7 +473,7 @@ html, body {
 
 /* Fluid root font scaling */
 html {
-    font-size: clamp(16px, 1vw + 12px, 22px);
+    font-size: 16px;
 }
 
 /* Large container scaling */
@@ -481,8 +482,8 @@ html {
 }
 
 /* Header scaling for big screens */
-.brand-title {
-    font-size: clamp(2.8rem, 4vw, 4.5rem);
+.brand-subtitle {
+    font-size: clamp(0.9rem, 1vw, 1.1rem);
 }
 
 .brand-subtitle {
@@ -529,18 +530,18 @@ html {
 }
 
 /* Ultra-wide monitor support */
-@media (min-width: 1600px) {
+@media (min-width:1600px){
 
-    .main-content {
-        max-width: 1600px;
+    .main-content{
+        max-width:1500px;
     }
 
-    .brand-title {
-        font-size: 4.8rem;
+    .brand-title{
+        font-size:3.2rem;
     }
 
-    .brand-subtitle {
-        font-size: 1.4rem;
+    .brand-subtitle{
+        font-size:1.1rem;
     }
 
 }
