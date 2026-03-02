@@ -65,7 +65,7 @@ body {
 
 /* Brand title */
 .brand-title {
-    font-size: clamp(2.2rem, 2.8vw, 3rem);
+    font-size: clamp(1.8rem, 2vw, 2.3rem);
     font-weight: 700;
     letter-spacing: 2px;
     background: linear-gradient(90deg, #3b82f6, #06b6d4);
@@ -299,7 +299,7 @@ body {
     display: flex;
     align-items: center;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 20px;
     gap: 10px;
 }
 
