@@ -440,7 +440,7 @@ body {
     padding: 10px 12px;
     width: 100%;
     max-width: 100%; /* Prevent overflow */
-    font-size: 15px;
+    font-size: 17px;
     min-height: 40px;
     line-height: 1.4;
     border-radius: 6px;
@@ -449,8 +449,9 @@ body {
     color: white;
 }
 .input-group button {
-    width: 100%;          /* Same width as input */
-    max-width: 100%;
+    min-width: 130px;     /* Slightly wider */
+    padding: 8px 16px;    /* Bigger button body */
+    font-size: 16px;      /* Bigger button text */
 }
 .save-time-btn,
 .save-task-btn,
