@@ -652,32 +652,70 @@ html {
     }
 
     .log-table td {
-        border: none;
-        padding: 6px 0;
-        font-size: 15px;
-        word-break: break-word;
+    border: none;
+    padding: 0;
+    font-size: 15px;
+    word-break: break-word;
+    text-align: justify;
+    text-align-last: center;
+}
+
+    /* Inner glass container for values */
+    .log-table td > * ,
+    .log-table td {
+        position: relative;
+    }
+
+    .log-table td {
+        margin-top: 6px;
+    }
+
+    /* Create glass box around content */
+    .log-table td::after {
+        content: "";
+        position: absolute;
+        inset: 28px 0 0 0; /* pushes below label */
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 10px;
+        z-index: -1;
+    }
+
+    /* Padding for content inside glass */
+    .log-table td {
+        padding-top: 34px;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-bottom: 12px;
     }
 
     /* Add label before each field */
-    .log-table td:nth-child(1)::before {
-        content: "Time: ";
-        font-weight: 600;
-        opacity: 0.8;
+    .log-table td:nth-child(1)::before,
+    .log-table td:nth-child(2)::before,
+    .log-table td:nth-child(3)::before {
+        font-weight: 700;
+        font-size: 18px;
+        opacity: 1;
         display: block;
+        text-align: center;
+        padding-bottom: 8px;
+        margin-bottom: 12px;
+        border-bottom: 1px solid rgba(255,255,255,0.25);
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .log-table td:nth-child(1)::before {
+        content: "Time:";
     }
 
     .log-table td:nth-child(2)::before {
-        content: "Things Done: ";
-        font-weight: 600;
-        opacity: 0.8;
-        display: block;
+        content: "Things Done:";
     }
 
     .log-table td:nth-child(3)::before {
-        content: "Things I Have Done: ";
-        font-weight: 600;
-        opacity: 0.8;
-        display: block;
+        content: "Things I Have Done:";
     }
 
     /* Remove fixed desktop width */
