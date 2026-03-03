@@ -126,26 +126,26 @@ function attachAddEntryLogic(logCard, name) {
 
                 inputRow.children[2].innerHTML = `
                     <div class="input-group">
-                        <input type="text" class="ThingsIHaveDone-input" placeholder="Enter ThingsIHaveDone">
-                        <button class="save-ThingsIHaveDone-btn">Save</button>
+                        <input type="text" class="DescribeWork-input" placeholder="Enter DescribeWork">
+                        <button class="save-DescribeWork-btn">Save</button>
                     </div>
                 `;
 
-                const saveThingsIHaveDoneBtn = inputRow.querySelector(".save-ThingsIHaveDone-btn");
-                const ThingsIHaveDoneInput = inputRow.querySelector(".ThingsIHaveDone-input");
+                const saveDescribeWorkBtn = inputRow.querySelector(".save-DescribeWork-btn");
+                const DescribeWorkInput = inputRow.querySelector(".DescribeWork-input");
 
-                saveThingsIHaveDoneBtn.addEventListener("click", async function () {
+                saveDescribeWorkBtn.addEventListener("click", async function () {
 
-                    const ThingsIHaveDoneValue = ThingsIHaveDoneInput.value.trim();
-                    if (ThingsIHaveDoneValue === "") return;
+                    const DescribeWorkValue = DescribeWorkInput.value.trim();
+                    if (DescribeWorkValue === "") return;
 
-                    inputRow.children[2].innerHTML = ThingsIHaveDoneValue;
+                    inputRow.children[2].innerHTML = DescribeWorkValue;
 
                     const entryData = {
                         name: name,
                         time: inputRow.children[0].innerText,
                         task: inputRow.children[1].innerText,
-                        ThingsIHaveDone: ThingsIHaveDoneValue
+                        DescribeWork: DescribeWorkValue
                     };
 
                     let data;
@@ -225,8 +225,8 @@ saveNameBtn.addEventListener("click", function () {
                 <thead>
                     <tr>
                         <th>Time</th>
-                        <th>Things Done</th>
-                        <th>Things i have done</th>
+                        <th>I Was Focused On</th>
+                        <th>Describe The Work Done</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -500,8 +500,8 @@ async function fetchLogs() {
                         <thead>
                             <tr>
                                 <th>Time</th>
-                                <th>Things Done</th>
-                                <th>Things i have done</th>
+                                <th>I Was Focused On</th>
+                                <th>Describe The Work Done</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -534,7 +534,7 @@ async function fetchLogs() {
                 row.innerHTML = `
                     <td>${entry.time || ""}</td>
                     <td>${entry.task || ""}</td>
-                    <td>${entry.ThingsIHaveDone || ""}</td>
+                    <td>${entry.DescribeWork || ""}</td>
                 `;
 
                 tbody.appendChild(row);

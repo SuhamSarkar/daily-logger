@@ -365,6 +365,7 @@ body {
 .log-table th {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     font-weight: 600;
+    
 }
 
 .log-table td {
@@ -467,7 +468,7 @@ body {
 }
 .save-time-btn,
 .save-task-btn,
-.save-ThingsIHaveDone-btn {
+.save-DescribeWork-btn {
     padding: 6px 10px;
     border-radius: 6px;
     border: none;
@@ -479,7 +480,7 @@ body {
 
 .save-time-btn:hover,
 .save-task-btn:hover,
-.save-ThingsIHaveDone-btn:hover {
+.save-DescribeWork-btn:hover {
     transform: scale(1.05);
 }
 
@@ -704,6 +705,7 @@ html {
         width: 60%;
         margin-left: auto;
         margin-right: auto;
+        color: #22d3ee;
     }
 
     .log-table td:nth-child(1)::before {
@@ -711,11 +713,11 @@ html {
     }
 
     .log-table td:nth-child(2)::before {
-        content: "Things Done:";
+        content: "I Was Focused On:";
     }
 
     .log-table td:nth-child(3)::before {
-        content: "Things I Have Done:";
+        content: "Describe The Work Done:";
     }
 
     /* Remove fixed desktop width */
@@ -789,3 +791,4 @@ html {
     }
 
 }
+
