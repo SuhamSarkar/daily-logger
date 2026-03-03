@@ -14,7 +14,8 @@
     <title>Daily Logger</title>
 
     <!-- External CSS file -->
-    <link rel="stylesheet" href="style.css?v=25">
+    <link rel="stylesheet" href="style.css?v=29">
+    <link rel="icon" href="favicon.ico">
 </head>
 
 
@@ -52,7 +53,12 @@
 
     <!-- Main Content Placeholder (We will build this later) -->
     <main class="main-content">
-        
+                <!-- Loading Spinner (Hidden by default) -->
+                <div id="loadingSpinner" style="display: none; text-align: center; margin-bottom: 20px;">
+                    <div class="spinner"></div>
+                </div>
+
+                
             <!-- Container where name cards will be added dynamically -->
             <div id="logContainer"></div>
 
@@ -155,6 +161,6 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
-<script src="script.js?v=25" defer></script>
+<script src="script.js?v=29" defer></script>
 </body>
 </html>

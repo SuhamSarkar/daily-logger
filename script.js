@@ -143,6 +143,7 @@ function attachAddEntryLogic(logCard, name) {
 
                     const entryData = {
                         name: name,
+                        date: new Date().toISOString().split("T")[0], // Stores YYYY-MM-DD automatically
                         time: inputRow.children[0].innerText,
                         task: inputRow.children[1].innerText,
                         DescribeWork: DescribeWorkValue
@@ -474,14 +475,22 @@ async function fetchLogs() {
 
 
 
-        /* Group logs by name */
+        /* Group logs by name → then by date */
         const grouped = {};
 
         data.forEach(row => {
+
             if (!grouped[row.name]) {
-                grouped[row.name] = [];
+                grouped[row.name] = {};
             }
-            grouped[row.name].push(row);
+
+            const entryDate = row.date || new Date().toISOString().split("T")[0];
+
+            if (!grouped[row.name][entryDate]) {
+                grouped[row.name][entryDate] = [];
+            }
+
+            grouped[row.name][entryDate].push(row);
         });
 
 
@@ -527,23 +536,42 @@ async function fetchLogs() {
                 }
             }
 
-            /* Insert rows into table */
+            /* Insert rows into table grouped by date */
             const tbody = logCard.querySelector("tbody");
 
-            grouped[name].forEach(entry => {
+            /* Loop through each date */
+            Object.keys(grouped[name])
+                .sort((a, b) => new Date(a) - new Date(b))
+                .forEach(date => {
 
-                const row = document.createElement("tr");
+                /* ---- INSERT DATE ROW FIRST ---- */
+                const dateRow = document.createElement("tr");
+                dateRow.classList.add("date-row");
 
-                /* Attach database id to row */
-                row.setAttribute("data-id", entry.id);
-
-                row.innerHTML = `
-                    <td>${entry.time || ""}</td>
-                    <td>${entry.task || ""}</td>
-                    <td>${entry.DescribeWork || ""}</td>
+                dateRow.innerHTML = `
+                    <td colspan="3" class="date-cell">
+                        <span>${date}</span>
+                    </td>
                 `;
 
-                tbody.appendChild(row);
+                tbody.appendChild(dateRow);
+
+                /* ---- THEN INSERT ENTRIES OF THAT DATE ---- */
+                grouped[name][date].forEach(entry => {
+
+                    const row = document.createElement("tr");
+
+                    row.setAttribute("data-id", entry.id);
+
+                    row.innerHTML = `
+                        <td>${entry.time || ""}</td>
+                        <td>${entry.task || ""}</td>
+                        <td>${entry.DescribeWork || ""}</td>
+                    `;
+
+                    tbody.appendChild(row);
+
+                });
 
             });
 

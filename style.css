@@ -637,14 +637,14 @@ html {
     }
 
     .log-table,
-    .log-table tbody,
-    .log-table tr,
-    .log-table td {
-        display: block;
-        width: 100%;
-    }
+.log-table tbody,
+.log-table tr:not(.date-row),
+.log-table td {
+    display: block;
+    width: 100%;
+}
 
-    .log-table tr {
+    .log-table tr:not(.date-row) {
         background: rgba(255,255,255,0.03);
         margin-bottom: 15px;
         padding: 14px;
@@ -659,6 +659,7 @@ html {
     word-break: break-word;
     text-align: justify;
     text-align-last: center;
+    
 }
 
     /* Inner glass container for values */
@@ -790,6 +791,53 @@ html {
         font-size: 28px;
     }
 
+    /* ================================
+    MOBILE DATE BADGE (FIXED)
+    ================================ */
+
+    .date-row {
+        display: block !important;
+        background: transparent !important;
+        border: none !important;
+        margin: 25px 0 10px 0 !important;
+        padding: 0 !important;
+    }
+
+    .date-row td {
+        display: block !important;
+        width: 100% !important;
+        border: none !important;
+        padding: 0 !important;
+        background: transparent !important;
+    }
+
+    .date-cell {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .date-cell span {
+        display: inline-block;
+        padding: 8px 18px;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 14px;
+        background: linear-gradient(135deg, #3b82f6, #06b6d4);
+        color: white;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+    }
+
+    /* Prevent mobile labels on date row */
+    .date-row td::before {
+        content: none !important;
+    }
+
+    .date-row td::after {
+        content: none !important;
+    }
+
 }
 
 
@@ -827,3 +875,4 @@ html {
     font-size: 12px;
     opacity: 0.7;
 }
+
