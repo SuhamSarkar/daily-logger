@@ -792,3 +792,38 @@ html {
 
 }
 
+
+
+/* ===================================
+   FOOTER STYLING
+   =================================== */
+
+.main-footer {
+    margin-top: 240px; /* Increased spacing to push footer lower */
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.footer-divider {
+    width: 60%;
+    height: 1px;
+    margin: 0 auto 25px auto;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.footer-copy {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.footer-rights {
+    font-size: 14px;
+    opacity: 0.7;
+}
