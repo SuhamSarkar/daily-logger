@@ -441,8 +441,10 @@ async function fetchLogs() {
 
         try {
             const response = await supabaseClient
-                .from("daily_logs")
-                .select("*");
+            .from("daily_logs")
+            .select("*")
+            .order("date", { ascending: true })
+            .order("id", { ascending: true });
 
             console.log("Supabase raw response:", response);
 
