@@ -254,6 +254,12 @@ saveNameBtn.addEventListener("click", function () {
             addBtn.style.display = "inline-block";
         } else {
             addBtn.style.display = "none";
+
+            /* REMOVE unsaved input row when collapsing */
+            const inputRow = logCard.querySelector(".input-row");
+            if (inputRow) {
+                inputRow.remove();
+            }
         }
     });
 
@@ -560,6 +566,12 @@ async function fetchLogs() {
                     addBtn.style.display = "inline-block";
                 } else {
                     addBtn.style.display = "none";
+
+                    /* REMOVE unsaved input row when collapsing */
+                    const inputRow = logCard.querySelector(".input-row");
+                    if (inputRow) {
+                        inputRow.remove();
+                    }
                 }
 
             });
