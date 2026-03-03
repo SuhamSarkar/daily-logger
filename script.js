@@ -9,7 +9,7 @@ const SUPABASE_ANON_KEY = "sb_publishable_lIlQdoFNzpKQV0NxpNbq6g_KdXX1SaO";
 
 /* Create Supabase client */
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-alert("Supabase initialized");
+// alert("Supabase initialized");
 
 
 
@@ -437,11 +437,16 @@ async function fetchLogs() {
                 .from("daily_logs")
                 .select("*");
 
+            console.log("Supabase raw response:", response);
+
             if (response.error) {
+                console.error("Supabase select error:", response.error);
                 throw response.error;
             }
 
             data = response.data;
+
+            console.log("Fetched rows count:", data ? data.length : 0);
 
         } catch (err) {
             alert("Failed to load data. Please refresh the page.");
@@ -571,6 +576,7 @@ async function fetchLogs() {
 
 
     } catch (err) {
+        console.error("fetchLogs crashed:", err);
     }
 
 }
