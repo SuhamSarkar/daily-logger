@@ -97,6 +97,18 @@ function attachAddEntryLogic(logCard, name) {
 
         tbody.appendChild(inputRow);
 
+
+
+        /* Auto-scroll to newly added input row */
+        setTimeout(() => {
+            inputRow.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        }, 100);
+
+
+
         const saveBtn = inputRow.querySelector(".save-time-btn");
         const timeInput = inputRow.querySelector(".time-input");
 
