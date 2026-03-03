@@ -103,7 +103,7 @@ function attachAddEntryLogic(logCard, name) {
         saveBtn.addEventListener("click", function () {
 
             const timeValue = timeInput.value.trim();
-            if (timeValue === "") return;
+            // if (timeValue === "") return;
 
             inputRow.children[0].innerHTML = timeValue;
 
@@ -120,7 +120,7 @@ function attachAddEntryLogic(logCard, name) {
             saveTaskBtn.addEventListener("click", function () {
 
                 const taskValue = taskInput.value.trim();
-                if (taskValue === "") return;
+                // if (taskValue === "") return;
 
                 inputRow.children[1].innerHTML = taskValue;
 
@@ -137,7 +137,7 @@ function attachAddEntryLogic(logCard, name) {
                 saveDescribeWorkBtn.addEventListener("click", async function () {
 
                     const DescribeWorkValue = DescribeWorkInput.value.trim();
-                    if (DescribeWorkValue === "") return;
+                    // if (DescribeWorkValue === "") return;
 
                     inputRow.children[2].innerHTML = DescribeWorkValue;
 
