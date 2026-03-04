@@ -111,6 +111,7 @@ function attachAddEntryLogic(logCard, name) {
 
         const saveBtn = inputRow.querySelector(".save-time-btn");
         const timeInput = inputRow.querySelector(".time-input");
+        timeInput.focus();
 
         saveBtn.addEventListener("click", function () {
 
@@ -128,6 +129,7 @@ function attachAddEntryLogic(logCard, name) {
 
             const saveTaskBtn = inputRow.querySelector(".save-task-btn");
             const taskInput = inputRow.querySelector(".task-input");
+            taskInput.focus();
 
             saveTaskBtn.addEventListener("click", function () {
 
@@ -146,6 +148,8 @@ function attachAddEntryLogic(logCard, name) {
                 const saveDescribeWorkBtn = inputRow.querySelector(".save-DescribeWork-btn");
                 const DescribeWorkInput = inputRow.querySelector(".DescribeWork-input");
 
+                DescribeWorkInput.focus();
+
                 saveDescribeWorkBtn.addEventListener("click", async function () {
 
                     const DescribeWorkValue = DescribeWorkInput.value.trim();
@@ -155,7 +159,7 @@ function attachAddEntryLogic(logCard, name) {
 
                     const entryData = {
                         name: name,
-                        date: new Date().toISOString().split("T")[0], // Stores YYYY-MM-DD automatically
+                        date: new Date().toLocaleDateString("en-CA"), // Stores YYYY-MM-DD automatically
                         time: inputRow.children[0].innerText,
                         task: inputRow.children[1].innerText,
                         DescribeWork: DescribeWorkValue
@@ -343,9 +347,10 @@ deleteOption.addEventListener("click", function () {
             card.classList.remove("delete-mode");
 
             const checkbox = card.querySelector(".delete-checkbox");
-            if (checkbox) {
-                checkbox.remove();
-            }
+            if (checkbox) checkbox.remove();
+
+            card.querySelectorAll(".row-delete-checkbox").forEach(cb => cb.remove());
+            
         });
 
         return;
@@ -365,6 +370,35 @@ deleteOption.addEventListener("click", function () {
 
             const header = card.querySelector(".log-card-header");
             header.prepend(checkbox);
+
+
+            /* ALSO ADD CHECKBOXES TO EACH ENTRY ROW */
+            const rows = card.querySelectorAll("tbody tr:not(.date-row)");
+
+            rows.forEach(row => {
+
+                if (!row.querySelector(".row-delete-checkbox")) {
+
+                    const checkbox = document.createElement("input");
+                    checkbox.type = "checkbox";
+                    checkbox.classList.add("row-delete-checkbox");
+
+                    const firstCell = row.querySelector("td");
+
+                    if (firstCell) {
+
+                        firstCell.style.position = "relative";
+
+                        checkbox.style.position = "absolute";
+                        checkbox.style.top = "4px";
+                        checkbox.style.left = "4px";
+
+                        firstCell.appendChild(checkbox);
+
+                    }
+                }
+
+            });
         }
 
     });
@@ -382,39 +416,67 @@ confirmDeleteBtn.addEventListener("click", async function () {
 
         const checkbox = card.querySelector(".delete-checkbox");
 
-        if (checkbox && checkbox.checked) {
+        if ((checkbox && checkbox.checked) || card.querySelector(".row-delete-checkbox:checked")) {
 
             anySelected = true;
 
-            const rows = card.querySelectorAll("tbody tr");
+            const rows = card.querySelectorAll("tbody tr:not(.date-row)");
 
             let deleteFailed = false;
 
                 for (const row of rows) {
 
-                    const rowId = row.getAttribute("data-id");
+                    const rowCheckbox = row.querySelector(".row-delete-checkbox");
 
-                    if (rowId) {
-                        try {
-                            const response = await supabaseClient
-                                .from("daily_logs")
-                                .delete()
-                                .eq("id", rowId);
+                        if (rowCheckbox && rowCheckbox.checked) {
 
-                            if (response.error) {
-                                throw response.error;
+                            const rowId = row.getAttribute("data-id");
+
+                            if (rowId) {
+                                try {
+                                    const response = await supabaseClient
+                                        .from("daily_logs")
+                                        .delete()
+                                        .eq("id", rowId);
+
+                                    if (response.error) {
+                                        throw response.error;
+                                    }
+
+                                } catch (err) {
+                                    alert("Failed to delete entry. Please try again.");
+                                    deleteFailed = true;
+                                    break;
+                                }
                             }
 
-                        } catch (err) {
-                            alert("Failed to delete entry. Please try again.");
-                            deleteFailed = true;
                         }
+                }
+
+                if (checkbox && checkbox.checked && !deleteFailed) {
+
+                const nameSpan = card.querySelector(".name-group span");
+                const cardName = nameSpan ? nameSpan.innerText : null;
+
+                if (cardName) {
+                    try {
+                        const response = await supabaseClient
+                            .from("daily_logs")
+                            .delete()
+                            .eq("name", cardName);
+
+                        if (response.error) {
+                            throw response.error;
+                        }
+
+                    } catch (err) {
+                        alert("Failed to delete this log card from database.");
+                        continue;
                     }
                 }
 
-                if (!deleteFailed) {
-                    card.remove();
-                }
+                card.remove();
+            }
         }
     }
 
