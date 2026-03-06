@@ -637,14 +637,14 @@ html {
     }
 
     .log-table,
-.log-table tbody,
-.log-table tr:not(.date-row),
-.log-table td {
-    display: block;
-    width: 100%;
-}
+    .log-table tbody,
+    .log-table tr,
+    .log-table td {
+        display: block;
+        width: 100%;
+    }
 
-    .log-table tr:not(.date-row) {
+    .log-table tr {
         background: rgba(255,255,255,0.03);
         margin-bottom: 15px;
         padding: 14px;
@@ -875,4 +875,7 @@ html {
     font-size: 12px;
     opacity: 0.7;
 }
+
+
+
 
