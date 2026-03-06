@@ -847,7 +847,7 @@ html {
    =================================== */
 
 .main-footer {
-    margin-top: 240px; /* Increased spacing to push footer lower */
+    margin-top: 300px; /* Increased spacing to push footer lower */
     padding: 40px 20px;
     text-align: center;
 }

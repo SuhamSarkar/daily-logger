@@ -547,12 +547,12 @@ async function fetchLogs() {
                 /* ---- INSERT DATE ROW FIRST ---- */
                 const dateRow = document.createElement("tr");
                 dateRow.classList.add("date-row");
-const formattedDate = new Date(date).toLocaleDateString("en-US", {
-    weekday: "short",
-    year: "numeric",
-    month: "long",
-    day: "numeric"
-});
+                const formattedDate = new Date(date).toLocaleDateString("en-US", {
+                    weekday: "short",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
+                });
                 dateRow.innerHTML = `
                     <td colspan="3" class="date-cell">
                         <span>${formattedDate}</span>
